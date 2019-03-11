@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "classnames": "^2.2.6",
     "qs": "^6.6.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
@@ -24,5 +25,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "proxy": "http://localhost:5000"
 }
