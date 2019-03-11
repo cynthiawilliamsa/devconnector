@@ -13,6 +13,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json());
 
+
 //dB config
 const db = require('./config/keys', {useNewUrlParser: true}).mongoURI;
 

@@ -1,28 +1,40 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class Register extends Component {
   state = {
-      name: "",
-      email: "",
-      password: "",
-      password2: "",
-      errors: {}
+    name: "",
+    email: "",
+    password: "",
+    password2: "",
+    errors: {}
+  };
+
+  onChange = e => {
+    //brackets target name of input and sets to e.target value
+    this.setState({ [e.target.name]: e.target.value });
+  };
+  onSubmit = e => {
+    e.preventDefault();
+    const newUser = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+      password2: this.state.password2
     };
-  
-  onChange = (e) => {
-      //brackets target name of input and sets to e.target value
-      this.setState({[e.target.name]: e.target.value})
-  }
-  onSubmit = (e) => {
-      e.preventDefault();
-      const newUser = {
-          name: this.state.name,
-          email:this.state.email,
-          password: this.state.password,
-          password2: this.state.password2
-      }
-      console.log(newUser);
-  }
+    axios
+      .post(
+        "/api/users/register",
+        {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json"
+            },
+        newUser})
+      .then(res => console.log(res.data))
+      .catch(error => console.log(error.response));
+  };
+
   render() {
     return (
       <div className="register">
